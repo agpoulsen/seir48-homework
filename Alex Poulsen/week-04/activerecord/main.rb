@@ -12,9 +12,11 @@ ActiveRecord::Base.establish_connection(
 ActiveRecord::Base.logger = Logger.new(STDERR)
 
 class Whisky < ActiveRecord::Base
+  belongs_to :distillery
 end
 
 class Distillery < ActiveRecord::Base
+  has_many :whiskies
 end
 
 get '/' do
