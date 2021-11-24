@@ -1,26 +1,28 @@
 function quickSort(arr){
+  if (arr.length <= 1) {
+    return arr;
+  }
 
+  const pivot = arr.pop(); // can use .shift() as well
+
+  // O(2N) less code
+  const lessThan = arr.filter( element => element < pivot );
+  const greaterThan = arr.filter( element => element >= pivot );
+
+  //0(N) more code
+  // const lessThan = [];
+  // const greaterThan = [];
+  //
+  // arr.forEach((element) => {
+  //   if ( element < pivot ) {
+  //     lessThan.push(element);
+  //   } else {
+  //     greaterThan.push(element);
+  //   }
+  // });
+
+  // ES6
+  return [...quickSort(lessThan), pivot, ...quickSort(greaterThan)]
 }
 
-
 module.exports = quickSort;
-
-// let pivot = arr[0]
-// let i = 0;
-// let j = arr.length - 1;
-//
-// while (i < j) {
-//   while ( arr[i] <= pivot ) {
-//     i++;
-//   }
-//   while ( arr[j] > pivot) {
-//     j--;
-//   }
-//   if ( i < j ) {
-//     [ arr[i], arr[j] ] = [ arr[j], arr[i] ];
-//   }
-// }
-// [ arr[0], arr[j] ] = [ arr[j], arr[0] ]
-//
-// return
-// }

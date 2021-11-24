@@ -1,16 +1,14 @@
 function mergeSort(arr) {
 
-  if (arr.length === 1) {
+  if (arr.length <= 1) {
     return arr;
+  } else {
+    const middleIndex = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, middleIndex));
+    const right = mergeSort(arr.slice(middleIndex));
+    return merge(left, right);
   }
-
-  let divideIndex = Math.floor(arr.length / 2);
-  let arr1 = mergeSort(arr.slice(0, divideIndex));
-  let arr2 = mergeSort(arr.slice(divideIndex));
-
-  return merge(arr1, arr2);
 }
-
 
 // HELPER FUNCTION: merge two sorted arrays
 function merge(arr1, arr2) {
